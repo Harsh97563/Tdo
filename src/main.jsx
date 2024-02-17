@@ -8,7 +8,7 @@ import SignIn from './Components/SignIn.jsx';
 import SignUp from './Components/SignUp.jsx';
 import { RecoilRoot } from 'recoil';
 
-const router= createHashRouter(
+const router= createBrowserRouter(
   createRoutesFromElements(
     <Route>
       <Route path="/" element={<App />}>
