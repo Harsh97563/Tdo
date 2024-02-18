@@ -17,7 +17,7 @@ function Dashboard() {
     }, 1000);
   }, [])
   useEffect(()=>{
-    axios.get('http://localhost:3001/api/v1/todo/gettodos',
+    axios.get('https://todoudo.onrender.com/api/v1/todo/gettodos',
      {
       headers:{
         Authorization: `Bearer ${localStorage.getItem("token")}`
@@ -77,7 +77,7 @@ function Todo({title,id}){
     </div>
     <div className='flex'>
       <button className='m-2' onClick={(e)=>{
-        axios.post("http://localhost:3001/api/v1/todo/delete", {
+        axios.post("https://todoudo.onrender.com/api/v1/todo/delete", {
           todoId: id 
         },{
           headers:{

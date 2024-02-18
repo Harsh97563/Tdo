@@ -33,7 +33,7 @@ function SignUp() {
             </div>
             <button className='bg-gray-700 w-[15vw] h-[6vh] flex rounded-lg justify-center items-center' onClick={()=>{
                 setLoading(true)
-                axios.post("http://localhost:3001/api/v1/user/SignUp", {
+                axios.post("https://todoudo.onrender.com/api/v1/user/SignUp", {
                     email: Email,
                     firstName: firstName,
                     lastName: lastName,

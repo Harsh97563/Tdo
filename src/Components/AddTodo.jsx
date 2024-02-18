@@ -27,7 +27,7 @@ function AddTodo() {
         <div><button className='bg-gray-700 text-white text-xl rounded-xl w-[20vw] md:w-[15vw] p-2' onClick={()=>{
           setaddTodo("")
           if(edittodo){
-            axios.post("http://localhost:3001/api/v1/todo/update", {
+            axios.post("https://todoudo.onrender.com/api/v1/todo/update", {
             updatedTitle: writingtodo,
             todoId: todoId
 
@@ -44,7 +44,7 @@ function AddTodo() {
             })
             return
           }
-          axios.post("http://localhost:3001/api/v1/todo/addtodo", {
+          axios.post("https://todoudo.onrender.com/api/v1/todo/addtodo", {
             title: writingtodo
           },
           {
