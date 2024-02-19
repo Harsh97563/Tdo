@@ -8,10 +8,6 @@ export const nameAtom= atom({
     key: 'name',
     default: ""
 })
-export const writingtodoAtom= atom({
-    key: 'writingtodo',
-    default:"Type Your Todo!"
-})
 export const allTodosAtom= atom({
     key: 'todos',
     default:[]
@@ -31,4 +27,8 @@ export const editTodoAtom= atom({
 export const editTodoIDAtom= atom({
     key: "todoId",
     default: ""
+})
+export const rerenderAton= atom({
+    key: "rerender",
+    default: false,
 })
