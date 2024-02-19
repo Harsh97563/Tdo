@@ -7,10 +7,9 @@ import { SignInSchema } from '../Validations/UserValidation';
 function SignIn() {
     const navigate= useNavigate()
     const [Email, setEmail] = useState("")
-    const [errormsg, setErrormsg] = useState("")
     const [Password, setPassword] = useState("")
     const [loading, setLoading] = useState(false)
-    const notify = () => toast.warning(`${errormsg}`, {
+    const notify = (msg) => toast.warning(`${msg}`, {
         autoClose: 1500,
     });
 
@@ -35,12 +34,11 @@ function SignIn() {
                 }
                 const schematest=await SignInSchema.validate(tempformdata)
                     .then(() => console.log("Validation successful"))
-                    .catch(async(error)=>{
-                        await setErrormsg(error.message)
+                    .catch((error)=>{
+                        notify(error.message)
                         return false;
                     });
                 if(!schematest){
-                    notify()
                     setLoading(false)
                     return;
                 }

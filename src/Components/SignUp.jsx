@@ -11,12 +11,11 @@ function SignUp() {
     const navigate= useNavigate()
     const [jwtToken, setJwtToken] = useRecoilState(jwtTokenAtom)
     const [Email, setEmail] = useState("")
-    const [errormsg, setErrormsg] = useState("")
     const [firstName, setFirstName] = useState("")
     const [lastName, setLastName] = useState("")
     const [Password, setPassword] = useState("")
     const [loading, setLoading] = useState(false)
-    const notify = () => toast.warning(`${errormsg}`, {
+    const notify = (msg) => toast.warning(`${msg}`, {
         autoClose: 1500,
     });
 
@@ -49,12 +48,11 @@ function SignUp() {
                 }
                 const schematest=await SignUpSchema.validate(tempformdata)
                     .then(() => console.log("Validation successful"))
-                    .catch(async(error)=>{
-                        await setErrormsg(error.message)
+                    .catch((error)=>{
+                        notify(error.message);
                         return false;
                     });
                 if(!schematest){
-                    notify()
                     setLoading(false)
                     return;
                 }
