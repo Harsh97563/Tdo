@@ -1,11 +1,18 @@
-import React, {useState} from 'react'
+import React, {useState} from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios'
 import { useNavigate } from "react-router-dom";
+import { SignInSchema } from '../Validations/UserValidation';
 function SignIn() {
     const navigate= useNavigate()
     const [Email, setEmail] = useState("")
+    const [errormsg, setErrormsg] = useState("")
     const [Password, setPassword] = useState("")
     const [loading, setLoading] = useState(false)
+    const notify = () => toast.warning(`${errormsg}`, {
+        autoClose: 1500,
+    });
 
   return (
     <div className='w-[100vw] flex items-center justify-center  h-[100vh] bg-slate-700 '>
@@ -20,8 +27,23 @@ function SignIn() {
                 }} />
                 
             </div>
-            <button className='bg-gray-700 w-[15vw] h-[6vh] flex rounded-lg justify-center items-center' onClick={()=>{
+            <button className='bg-gray-700 w-[15vw] h-[6vh] flex rounded-lg justify-center items-center' onClick={async()=>{
                 setLoading(true)
+                const tempformdata= {
+                    email: Email,
+                    password: Password,
+                }
+                const schematest=await SignInSchema.validate(tempformdata)
+                    .then(() => console.log("Validation successful"))
+                    .catch((error)=>{
+                        setErrormsg(error.message)
+                        return false;
+                    });
+                if(!schematest){
+                    notify()
+                    setLoading(false)
+                    return;
+                }
                 axios.post("https://todoudo.onrender.com/api/v1/user/SignIn", {
                     email: Email,
                     password: Password,
@@ -44,6 +66,7 @@ function SignIn() {
        </div> : <div className='font-bold text-gray-900 font-mono text-xl'>Sign In</div> }</button>
             <div>Doesn't have an Account? <span className='underline text-red-500'><a href="/SignUp">Sign Up</a></span></div>
         </div>
+        <ToastContainer/>
     </div>
   )
 }
