@@ -16,9 +16,9 @@ function Header() {
             </svg>
           </div>
           <div className='flex'>
-            <AddTodoBtn/>
+            {/* <AddTodoBtn/>
             <button className=' rounded-md bg-teal-200 w-full 
-            h-[5vh] text-lime-500 m-2'>Pomodoro!</button>
+            h-[5vh] text-lime-500 m-2'>Pomodoro!</button> */}
           </div>
           {/* <ul className='flex list-none w-[10vw] justify-between'>
               <li>Home</li>

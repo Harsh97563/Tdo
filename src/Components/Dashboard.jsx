@@ -17,7 +17,7 @@ function Dashboard() {
     <div className='w-[100vw] flex md:items-start flex-col md:flex-row h-[100vh] justify-between bg-emerald-400 pt-[10vh] '>
       <AddTodo/>
       <Clock Name={Name}/>
-      <div className='flex overflow-auto flex-col w-[92vw] md:w-[40vw]  item-center m-4 md:m-8 rounded-3xl p-3 md:p-6 bg-teal-900 h-[80vh] '>
+      <div className='flex overflow-auto flex-col w-[92vw] md:w-[40vw]  item-center m-4 md:m-8 rounded-3xl p-3 md:p-6 h-[80vh] '>
         {!loading? <div role="status">
           <svg aria-hidden="true" class="w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor"/>
@@ -39,7 +39,7 @@ function Todo({title,id}){
   const [update, setupdate] = useRecoilState(rerenderAton);
   const [edittodo, setEdittodo] = useRecoilState(editTodoAtom)
   const [todoId, setTodoId] = useRecoilState(editTodoIDAtom)
-  return <div className='flex w-[80vw] md:w-[35vw] m-2 p-3 rounded-xl h-[7vh] justify-between items-center flex-row border-none bg-gray-700 text-white'>
+  return <div className='flex w-[80vw] md:w-[35vw] m-2 p-3 backdrop-blur-sm  h-[7vh] justify-between items-center flex-row border-none bg-white/30 text-white'>
     
     <div>
       <h2><input type="text" className='text-white font-mono text-xl  bg-transparent p-2 ' onChange={(e)=>{
