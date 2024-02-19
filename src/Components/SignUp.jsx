@@ -49,8 +49,8 @@ function SignUp() {
                 }
                 const schematest=await SignUpSchema.validate(tempformdata)
                     .then(() => console.log("Validation successful"))
-                    .catch((error)=>{
-                        setErrormsg(error.message)
+                    .catch(async(error)=>{
+                        await setErrormsg(error.message)
                         return false;
                     });
                 if(!schematest){
