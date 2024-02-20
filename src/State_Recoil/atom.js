@@ -20,9 +20,9 @@ export const jwtTokenAtom= atom({
     key: 'jwtToken',
     default: ""
 })
-export const editTodoAtom= atom({
+export const LoadingPageAtom= atom({
     key: "editTodo",
-    default: false
+    default: true
 })
 export const editTodoIDAtom= atom({
     key: "todoId",
