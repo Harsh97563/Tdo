@@ -25,7 +25,7 @@ function AddTodo() {
             <input className=' m-5 text-white border-none focus: outline-none bg-transparent w-full' type="text" 
             ref={inputRef} 
             value={currentTodo} 
-            placeholder='Type your todo!' 
+            placeholder='Click here to type your todo!' 
             onChange={(e)=>{
               setCurrentTodo(e.target.value)
             }}

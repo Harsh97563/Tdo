@@ -21,6 +21,7 @@ function Loading() {
         </line>
     </svg>
     <span class="text-4xl font-medium text-teal-950">Loading...</span>
+    <div className=' text-2xl'>Backend is Slow!</div>
 </div>
     </div>
   )
