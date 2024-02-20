@@ -18,7 +18,7 @@ function Dashboard() {
       <AddTodo/>
       <Clock Name={Name}/>
       <div className='flex overflow-auto flex-col w-[92vw] md:w-[40vw]  item-center m-4 md:m-8 rounded-3xl  md:p-6 h-[80vh] '>
-        {!loading? <Loading/>:
+        {loading? <Loading/>:
         todos.map((e)=>{
           return <Todo key={e._id} id={e._id} title={e.title}/>
         })
