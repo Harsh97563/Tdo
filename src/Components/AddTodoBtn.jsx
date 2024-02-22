@@ -31,7 +31,7 @@ function AddTodoBtn() {
   return (
     <div className='flex w-[25vw] md:w-[15vw] h-[5vh] m-2'>
         <button className='text-lime-500 p-2 w-full rounded-md bg-teal-200' onClick={()=>{
-            setAddTodo("translate-x-[90vw] md:translate-x-[70vw]")
+            setAddTodo("translate-x-[95vw] md:translate-x-[70vw]")
         }}>Add Todo</button>
     </div>
   )
