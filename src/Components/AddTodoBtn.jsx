@@ -21,7 +21,6 @@ function AddTodoBtn() {
           setTodos(res.data.todos.todos);
           setName(res.data.firstName);
           setloading(false)
-        console.log(res);
           setupdate(false)
         })
         .catch((error)=>{

@@ -20,7 +20,7 @@ function Dashboard() {
       <div className='flex overflow-auto flex-col w-[92vw] md:w-[40vw]  item-center m-4 md:m-8 rounded-3xl  md:p-6 h-[80vh] '>
         {loading? <Loading/>:
         todos.map((e)=>{
-          return <Todo key={e._id} id={e._id} title={e.title}/>
+          return <Todo key={e._id} id={e._id} priority={e.priority} title={e.title}/>
         })
         }
       </div>
@@ -28,22 +28,24 @@ function Dashboard() {
   )
 }
 
-function Todo({title,id}){
-  console.log("rerender");
+function Todo({title,id, priority}){
+  setTimeout(() => {
+    setDivanimation("w-[88vw] md:w-[35vw]");
+    setInputanimation("w-[58vw] md:w-[28vw]");
+  }, 500);
+  const prior= `shadow-${priority}-500`
   const [btnState, setBtnState] = useState("invisible");
   const [tempTodo, setTempTodo] = useState(title);
   const [update, setupdate] = useRecoilState(rerenderAton);
-  return <div className='flex w-[88vw] md:w-[35vw] m-2 p-3 backdrop-blur-sm  h-[7vh] justify-between items-center flex-row border-none shadow-[5px_5px_0px_1px_rgba(5,56,107,1)] transition-all bg-white/30 text-white'>
-    
-    <div >
-      <h2><input type="text" className={`text-white w-[58vw] md:w-[28vw] outline-none caret-black font-mono text-xl border-transparent focus:border-l-4 transition-all duration-300 focus:border-teal-950 bg-transparent p-2 `} onChange={(e)=>{
-        setTempTodo(e.target.value);
-        setBtnState("visible");
-      }} value={tempTodo}/></h2>
-    </div>
-    <div className='flex'>
-    <button className={`m-2 ${btnState}`} onClick={(e)=>{
-        axios.post("https://todoudo.onrender.com/api/v1/todo/update", {
+  const [divanimation, setDivanimation] = useState("w-[0vw] md:w-[0vw]")
+  const [inputanimation, setInputanimation] = useState("w-[0vw] md:w-[0vw]")
+  const handlekeypress= (e)=>{
+    if(e.key === 'Enter'){
+      addTodoFunction();
+    }
+  }
+  const addTodoFunction= ()=>{
+    axios.post("https://todoudo.onrender.com/api/v1/todo/update", {
           updatedTitle: tempTodo,
           todoId: id
 
@@ -60,6 +62,20 @@ function Todo({title,id}){
           }).finally(()=>{
             setBtnState("invisible");
           })
+  }
+  return <div className={`flex ${divanimation} overflow-hidden m-2 p-3 backdrop-blur-sm  h-[7vh] justify-between duration-300 items-center flex-row border-none shadow-[5px_5px_0px_1px_rgba(5,56,107,1)] ${prior} ease-linear bg-white/30 text-white`}>
+    
+    <div >
+      <h2><input type="text" className={`text-white ${inputanimation} outline-none caret-black font-mono text-xl border-transparent focus:border-l-4 transition-all duration-300 focus:border-teal-950 bg-transparent p-2 `} onChange={(e)=>{
+        setTempTodo(e.target.value);
+        setBtnState("visible");
+      }} value={tempTodo}
+      onKeyPress={addTodoFunction}
+      /></h2>
+    </div>
+    <div className='flex'>
+    <button className={`m-2 ${btnState}`} onClick={(e)=>{
+      addTodoFunction()
       }}>
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
       <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
@@ -74,6 +90,8 @@ function Todo({title,id}){
           }
         })
         .then((res)=>{
+          setDivanimation("w-[0vw] md:w-[0vw]");
+          setInputanimation("w-[58vw] md:w-[28vw]");
           console.log(res)
         })
         .catch((error)=>{
