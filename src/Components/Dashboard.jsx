@@ -80,7 +80,7 @@ function Todo({title,id, priority}){
             console.log(error);
           }).finally(()=>{
             setBtnState("invisible");
-            setInputActive("")
+            setInputActive("h-[7vh]")
           })
   }
   return <div className={`flex ${divanimation} overflow-hidden m-2 p-2 backdrop-blur-sm justify-between items-center ${inputActive}  duration-300 flex-col border-none shadow-[5px_5px_0px_1px_rgba(5,56,107,1)] ${prior} ease-linear bg-white/30 text-white`}>
