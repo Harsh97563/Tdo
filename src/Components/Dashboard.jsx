@@ -91,7 +91,7 @@ function Todo({title,id, priority}){
       }} value={tempTodo}
       onKeyPress={addTodoFunction}
       onFocus={()=>{
-        setInputActive("h-[17vh] justify-between")
+        setInputActive("h-[18vh] justify-between")
         setBtnState("visible");
       }}
       /></h2>
