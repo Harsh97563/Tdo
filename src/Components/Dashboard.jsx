@@ -39,7 +39,7 @@ function Todo({title,id, priority}){
   const [update, setupdate] = useRecoilState(rerenderAton);
   const [divanimation, setDivanimation] = useState("w-[0vw] md:w-[0vw]")
   const [inputanimation, setInputanimation] = useState("w-[0vw] md:w-[0vw]")
-  const [inputActive, setInputActive] = useState("");
+  const [inputActive, setInputActive] = useState("h-[7vh]");
   const [selectedPriority, setSelectedPriority] = useState("");
   const handlePriorityChange = (e) => {
     setSelectedPriority(e.target.value);
@@ -83,7 +83,7 @@ function Todo({title,id, priority}){
             setInputActive("")
           })
   }
-  return <div className={`flex ${divanimation} overflow-hidden m-2 p-2 backdrop-blur-sm h-[7vh] justify-between items-center ${inputActive}  duration-300 flex-col border-none shadow-[5px_5px_0px_1px_rgba(5,56,107,1)] ${prior} ease-linear bg-white/30 text-white`}>
+  return <div className={`flex ${divanimation} overflow-hidden m-2 p-2 backdrop-blur-sm justify-between items-center ${inputActive}  duration-300 flex-col border-none shadow-[5px_5px_0px_1px_rgba(5,56,107,1)] ${prior} ease-linear bg-white/30 text-white`}>
     <div className='flex w-full h-[7vh]'>
     <div >
       <h2><input type="text" className={`text-white ${inputanimation} outline-none caret-black font-mono text-xl border-transparent focus:border-l-4 transition-all duration-300 focus:border-teal-950 bg-transparent p-2 h-full `} onChange={(e)=>{
