@@ -33,6 +33,7 @@ function Todo({title,id, priority}){
     setDivanimation("w-[88vw] md:w-[35vw]");
     setInputanimation("w-[58vw] md:w-[28vw]");
   }, 500);
+  let temppriority= priority;
   let prior;
   const [btnState, setBtnState] = useState("invisible");
   const [tempTodo, setTempTodo] = useState(title);
@@ -45,16 +46,16 @@ function Todo({title,id, priority}){
     setSelectedPriority(e.target.value);
     console.log(e.target.value);
   };
-  if(priority==="red"){
+  if(temppriority==="red"){
     prior="shadow-red-500"
   }
-  if(priority==="orange"){
+  if(temppriority==="orange"){
     prior="shadow-orange-500"
   }
-  if(priority==="yellow"){
+  if(temppriority==="yellow"){
     prior="shadow-yellow-500"
   }
-  if(priority==="green"){
+  if(temppriority==="green"){
     prior="shadow-green-500"
   }
   const handlekeypress= (e)=>{
@@ -76,6 +77,7 @@ function Todo({title,id, priority}){
           })
           .then((res)=>{
             console.log(res);
+            setupdate(true)
           }).catch((error)=>{
             console.log(error);
           }).finally(()=>{
